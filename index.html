@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Комбинатор</title>
+  <style>
+  .textareasCss {padding: 10px; width: 20%;}
+  #combinate, #quotes, label, #copy {font-size: 24px;}
+  #combinate, #copy {padding: 5px; margin: 10px 10px 10px 60px}
+  #copy
+  #quotes {transform: scale(2);}
+  label {margin-left: 5px;}
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="textareas">
+    <textarea class="textareasCss" id="textareas-one" rows="40"></textarea>
+    <textarea class="textareasCss" id="textareas-two" rows="40"></textarea>
+    <textarea class="textareasCss" id="textareas-result" rows="40"></textarea>
+    <button id="copy" onclick="copy_to_clipboard();">Копировать</button>
+  </div>
+<div class="quotesAndButtons">
+  <input type="checkbox" id="quotes" checked />
+  <label for="checkbox">Кавычки</label>
+  <button id="combinate" onclick="combo()">Сгенерировать</button>
+</div> 
+
+
+
+
+</div>
+
+
+<script>
+
+function combo() {
+    var areaOne = document.querySelector("#textareas-one").value.split("\n");
+    var areaTwo = document.querySelector("#textareas-two").value.split("\n");
+            
+    var result;
+    var end = '';
+    
+    var quotes = document.querySelector("#quotes");
+    if (quotes.checked) {
+      result = areaOne.flatMap(d => areaTwo.map(v => '"' + d + ' ' + v + '"' + '\n'));
+    }else{
+      result = areaOne.flatMap(d => areaTwo.map(v => d + ' ' + v + '\n'));
+    }
+  
+    for (var i=0; i<result.length; i++) {
+    end += result[i];
+}
+    
+    document.getElementById("textareas-result").value = end;
+  };
+
+function copy_to_clipboard() {
+    document.querySelector('#textareas-result').select();
+    document.execCommand('copy');
+}
+
+  
+</script>
+</body>
+</html>

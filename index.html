@@ -8,7 +8,6 @@
   #combinate, #quotes, label, #copy {font-size: 24px;}
   #combinate, #copy {padding: 5px; margin: 10px 10px 10px 60px}
   #copy
-  #quotes {transform: scale(2);}
   label {margin-left: 5px;}
   </style>
 </head>
@@ -21,7 +20,7 @@
     <button id="copy" onclick="copy_to_clipboard();">Копировать</button>
   </div>
 <div class="quotesAndButtons">
-  <input type="checkbox" id="quotes" checked />
+  <input type="checkbox" id="quotes" checked style="transform: scale(2);" />
   <label for="checkbox">Кавычки</label>
   <button id="combinate" onclick="combo()">Сгенерировать</button>
 </div> 

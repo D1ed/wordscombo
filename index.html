@@ -4,11 +4,15 @@
   <meta charset="UTF-8">
   <title>Комбинатор</title>
   <style>
-  .textareasCss {padding: 10px; width: 20%;}
+  .textareasCss {padding: 10px; width: 20%; background-color: #a1a1a1;}
   #combinate, #quotes, label, #copy {font-size: 24px;}
-  #combinate, #copy {padding: 5px; margin: 10px 10px 10px 60px}
-  #copy
-  label {margin-left: 5px;}
+  #quotes:hover {cursor: pointer;}
+  #combinate, #copy {padding: 5px; margin: 10px 10px 10px 60px;border-radius: 10px;}
+  label {margin-left: 5px; color: white;}
+  body {background-image: url(https://jing.yandex-team.ru/files/lgraspopov/titanium-texture322.png);
+    background-size: 100%;
+    background-repeat: no-repeat;}
+  #combinate:hover, #copy:hover, #combinate-one:hover { background-color: #a1a1a1;}
   </style>
 </head>
 <body>
@@ -23,6 +27,7 @@
   <input type="checkbox" id="quotes" checked style="transform: scale(2);" />
   <label for="checkbox">Кавычки</label>
   <button id="combinate" onclick="combo()">Сгенерировать</button>
+  <button id="combinate-one" onclick="comboOne()">Одно слово</button>
 </div> 
 
 
@@ -53,6 +58,29 @@ function combo() {
     
     document.getElementById("textareas-result").value = end;
   };
+
+function comboOne() {
+    var areaOne = document.querySelector("#textareas-one").value.split("\n");
+                
+    var result;
+    var end = '';
+         
+    result = areaOne.flatMap(d => '"' + d + ' ' + d + '"' + '\n');
+ 
+  
+    for (var i=0; i<result.length; i++) {
+    end += result[i];
+}
+    
+    document.getElementById("textareas-result").value = end;
+  };
+
+function copy_to_clipboard() {
+    document.querySelector('#textareas-result').select();
+    document.execCommand('copy');
+}
+
+
 
 function copy_to_clipboard() {
     document.querySelector('#textareas-result').select();
